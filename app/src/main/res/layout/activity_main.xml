@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:fitsSystemWindows="true"
+    android:weightSum="1">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/input"
+        android:hint="INSERT TEXT HERE"
+        android:layout_weight="0.07"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:text="GENERATE"
+        android:id="@+id/generateBtn"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.04"
+        android:nestedScrollingEnabled="true" />
+</LinearLayout>
