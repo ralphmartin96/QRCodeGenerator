@@ -30,7 +30,7 @@ public class QRGenerator extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        QRcode = intent.getStringExtra("input");
+        QRcode = intent.getStringExtra("encryptedInput");
 
         Toast.makeText(QRGenerator.this, QRcode , Toast.LENGTH_SHORT).show();
         getID();

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button generateBtn;
     EditText input;
+    String encryptedData;
 
     public final static int WIDTH=500;
 
@@ -42,8 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
                 //Toast.makeText(MainActivity.this, input.getText(), Toast.LENGTH_SHORT).show();
 
+                try {
+                    encryptedData = AESencryption.encrypt(input.getText().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 Intent intent = new Intent(MainActivity.this, QRGenerator.class);
-                intent.putExtra("input", input.getText().toString());
+                intent.putExtra("encryptedInput", encryptedData);
                 startActivity(intent);
             }
         });
