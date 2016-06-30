@@ -3,6 +3,8 @@ package qrcodegenerator.example.user.qrcodegenerator;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,21 +39,27 @@ public class MainActivity extends AppCompatActivity {
         generateBtn = (Button) findViewById(R.id.generateBtn);
         input = (EditText) findViewById(R.id.input);
 
+        Typeface bebasNeue = Typeface.createFromAsset(getAssets(),"fonts/BebasNeue.otf");
+
+        generateBtn.setTypeface(bebasNeue);
+
         generateBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-
                 //Toast.makeText(MainActivity.this, input.getText(), Toast.LENGTH_SHORT).show();
 
-                try {
-                    encryptedData = AESencryption.encrypt(input.getText().toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                if(input.length() == 0) { Toast.makeText(MainActivity.this, "Field Empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        encryptedData = AESencryption.encrypt(input.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-                Intent intent = new Intent(MainActivity.this, QRGenerator.class);
-                intent.putExtra("encryptedInput", encryptedData);
-                startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, QRGenerator.class);
+                    intent.putExtra("encryptedInput", encryptedData);
+                    startActivity(intent);
+                }
             }
         });
     }
